@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "League Spartan", serif;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+:root {
+    --Very-Dark-Magenta: hsl(300, 43%, 22%);
+    --Soft-Pink: hsl(333, 80%, 67%);
+    --Dark-Grayish-Magenta: hsl(303, 10%, 53%);
+    --Light-Grayish-Magenta: hsl(300, 24%, 96%);
+    --White: hsl(0, 0%, 100%);
+}
+
+/* Animaciones */
+
+@keyframes to-top {
+    0% {
+        margin-top: 100px;
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes to-left {
+    0% {
+        margin-left: 100px;
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Utilidades */
+
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+/* Globales */
+
+html {
+    background-image: url(../images/bg-pattern-top-desktop.svg);
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+body {
+    background-image: url(../images/bg-pattern-bottom-desktop.svg);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 40rem;
+    height: 81vh;
+    overflow: hidden;
+}
+
+main {
+    width: 60rem;
+    margin: 4rem auto 0;
+}
+
+
+/* Estilos */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    width: 24rem;
+}
+
+.content .description {
+    line-height: 1.2;
+    margin: 8px 0;
+    width: 384px;
+    color: var(--Dark-Grayish-Magenta);
+}
+    
+.user {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.title {
+    color: var(--Very-Dark-Magenta);
+    font-weight: bold;
+    font-size: 3rem;
+    margin: 0 1rem 1rem 0;
+}
+
+.container-rate ul li {
+    background-color: var(--Light-Grayish-Magenta);
+    list-style: none;
+    width: 24rem;
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    animation: to-left 2s ease-in-out;
+}
+
+.container-rate ul li:nth-child(1) {
+    margin: 0 6% 1rem 0;
+}
+
+.container-rate ul li:nth-child(2) {
+    margin-left: 7%;
+}
+
+.container-rate ul li:nth-child(3) {
+    margin-left: 14%;
+}
+
+.container-rate .stars {
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-rate p {
+    color: var(--Very-Dark-Magenta);
+    font-weight: bold;
+}
+
+.container-valoration {
+    justify-content: space-between;
+    display: flex;
+    margin-top: 3rem;
+}
+
+.valoration {
+    background-color: var(--Very-Dark-Magenta);
+    color: #fff;
+    width: 15rem;
+    height: 9rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-size: .9rem;
+    animation: to-top 1s ease-in-out;
+}
+
+.container-valoration .valoration:nth-child(2) {
+    margin: 1rem 0 0;
+}
+
+.container-valoration .valoration:nth-child(3) {
+    margin-top: 3%;
+}
+
+.valoration .message {
+    margin-top: 20px;
+    line-height: 1.2;
+}
+
+.valoration .state {
+    color: var(--Soft-Pink);
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 800px) {
+        
+    main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }    
+
+    html {
+        background-image: url(../images/bg-pattern-top-desktop.svg);
+    }
+    
+    body {
+        background-image: url(../images/bg-pattern-bottom-mobile.svg);
+        height: auto;
+        /* overflow: auto; */
+    }
+    
+    .container-valoration {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .title {
+        font-size: 2rem;
+        padding: 0 1rem;
+        margin: 0;
+    }
+    
+    .content .description {
+        width: 100%;
+        font-size: 1rem;
+    }        
+
+    .container-rate {
+        margin: 2rem 0 0 .6rem;
+        width: 100%; 
+    }
+
+    .container-rate li.block-rate { 
+        font-size: .9rem;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: .8rem;
+        margin: 0 0 20px !important;
+        animation: none;
+    }
+    
+    .container-rate .stars {
+        margin: 0 5px 5px;
+    }
+    
+    .container-rate .stars img {
+        width: 10%;
+    }
+}
