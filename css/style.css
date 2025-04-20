@@ -23,7 +23,7 @@
 
 @keyframes to-top {
     0% {
-        margin-top: 100px;
+        transform: translateY(100px);
         opacity: 0;
     }
     100% {
@@ -33,7 +33,7 @@
 
 @keyframes to-left {
     0% {
-        margin-left: 100px;
+        translate: -100px;
         opacity: 0;
     }
     100% {
@@ -50,31 +50,47 @@
 
 /* Globales */
 
-html {
-    background-image: url(../images/bg-pattern-top-desktop.svg);
-    background-position: top left;
-    background-repeat: no-repeat;
-}
 
 body {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+body:before, body:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: 60% 40%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0; 
+
+}
+
+body:after {
     background-image: url(../images/bg-pattern-bottom-desktop.svg);
     background-position: bottom right;
-    background-repeat: no-repeat;
-    background-size: 40rem;
-    height: 81vh;
-    overflow: hidden;
+
+}
+
+body::before {
+    background-image: url(../images/bg-pattern-top-desktop.svg);
+    background-position: top left;
 }
 
 main {
-    width: 60rem;
-    margin: 4rem auto 0;
+    width: min(100%,60rem);
+    margin: 4rem auto;
 }
-
 
 /* Estilos */
 .container {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .content {
@@ -95,6 +111,11 @@ main {
     margin-right: 20px;
 }
 
+.container-rate ul{
+    width: min(100%, 30rem); 
+    display: block;
+}
+
 .title {
     color: var(--Very-Dark-Magenta);
     font-weight: bold;
@@ -105,7 +126,7 @@ main {
 .container-rate ul li {
     background-color: var(--Light-Grayish-Magenta);
     list-style: none;
-    width: 24rem;
+    width: min(100%, calc(24rem - 4.3rem));
     display: flex;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -119,10 +140,12 @@ main {
 
 .container-rate ul li:nth-child(2) {
     margin-left: 7%;
+    animation-duration: 2.2s;
 }
 
 .container-rate ul li:nth-child(3) {
     margin-left: 14%;
+    animation-duration: 2.4s;
 }
 
 .container-rate .stars {
@@ -138,6 +161,7 @@ main {
 }
 
 .container-valoration {
+    width: 100%;
     justify-content: space-between;
     display: flex;
     margin-top: 3rem;
@@ -146,20 +170,24 @@ main {
 .valoration {
     background-color: var(--Very-Dark-Magenta);
     color: #fff;
-    width: 15rem;
+    width: clamp(70%, 10rem, 14rem);
     height: 9rem;
     padding: 1.5rem;
+    margin-right: 2%;
     border-radius: 8px;
     font-size: .9rem;
-    animation: to-top 1s ease-in-out;
+    animation: to-top 1.4s ease-in-out;
 }
 
 .container-valoration .valoration:nth-child(2) {
-    margin: 1rem 0 0;
+    margin: 1rem 2% 0;
+    margin-left: 0;
+    animation-duration: 1.6s;
 }
 
 .container-valoration .valoration:nth-child(3) {
     margin-top: 3%;
+    animation-duration: 1.8s;
 }
 
 .valoration .message {
@@ -183,27 +211,25 @@ main {
         align-items: center;
     }    
 
-    html {
+    
+    body:after {
+        background-image: url(../images/bg-pattern-bottom-mobile.svg);
+    }
+    
+    body:before {
         background-image: url(../images/bg-pattern-top-desktop.svg);
     }
     
-    body {
-        background-image: url(../images/bg-pattern-bottom-mobile.svg);
-        height: auto;
-        /* overflow: auto; */
-    }
-    
     .container-valoration {
-        display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
     }
     
     .container {
-        display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
 
     .content {
@@ -230,11 +256,19 @@ main {
         width: 100%; 
     }
 
+    .container-rate ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
     .container-rate li.block-rate { 
         font-size: .9rem;
-        width: 100%;
         flex-direction: column;
         text-align: center;
+        width: 70% !important;
         padding: .8rem;
         margin: 0 0 20px !important;
         animation: none;
@@ -246,5 +280,9 @@ main {
     
     .container-rate .stars img {
         width: 10%;
+    }
+
+    .valoration {
+        margin-right: 0 !important;
     }
 }
